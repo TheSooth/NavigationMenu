@@ -23,4 +23,7 @@
 - (id)initWithFrame:(CGRect)frame title:(NSString *)title;
 - (void)displayMenuInView:(UIView *)view;
 
+- (void)showMenu;
+- (void)hideMenu;
+
 @end

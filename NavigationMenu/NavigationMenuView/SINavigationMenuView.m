@@ -42,20 +42,15 @@
 - (void)onHandleMenuTap:(id)sender
 {
     if (self.menuButton.isActive) {
-        NSLog(@"On show");
-        [self onShowMenu];
+        [self showMenu];
     } else {
-        NSLog(@"On hide");
-        [self onHideMenu];
+        [self hideMenu];
     }
 }
 
-- (void)onShowMenu
+- (void)showMenu
 {
     if (!self.table) {
-//        UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
-//        CGRect frame = mainWindow.frame;
-//        frame.origin.y += self.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
         self.table = [[SIMenuTable alloc] initWithFrame:self.menuContainer.frame items:self.items];
         self.table.menuDelegate = self;
     }
@@ -64,7 +59,7 @@
     [self.table show];
 }
 
-- (void)onHideMenu
+- (void)hideMenu
 {
     [self rotateArrow:0];
     [self.table hide];
