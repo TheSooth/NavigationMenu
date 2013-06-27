@@ -17,6 +17,8 @@
 
 @property (nonatomic, weak) id <SIMenuDelegate> menuDelegate;
 
+@property (nonatomic, strong) NSArray *items;
+
 - (id)initWithFrame:(CGRect)frame items:(NSArray *)items;
 - (void)show;
 - (void)hide;

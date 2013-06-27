@@ -18,8 +18,9 @@
     CGRect startFrame;
     NSIndexPath *currentIndexPath;
 }
+
 @property (nonatomic, strong) UITableView *table;
-@property (nonatomic, strong) NSArray *items;
+
 @end
 
 @implementation SIMenuTable
@@ -46,7 +47,7 @@
         UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.table.bounds.size.height, [SIMenuConfiguration menuWidth], self.table.bounds.size.height)];
         header.backgroundColor = [UIColor color:[SIMenuConfiguration itemsColor] withAlpha:[SIMenuConfiguration menuAlpha]];
         [self.table addSubview:header];
-
+        
     }
     return self;
 }
@@ -77,10 +78,10 @@
             self.layer.backgroundColor = [UIColor color:[SIMenuConfiguration mainColor] withAlpha:0.0].CGColor;
             self.table.frame = startFrame;
         } completion:^(BOOL finished) {
-//            [self.table deselectRowAtIndexPath:currentIndexPath animated:NO];
+            //            [self.table deselectRowAtIndexPath:currentIndexPath animated:NO];
             SIMenuCell *cell = (SIMenuCell *)[self.table cellForRowAtIndexPath:currentIndexPath];
             [cell setSelected:NO withCompletionBlock:^{
-
+                
             }];
             currentIndexPath = nil;
             [self removeFooter];
@@ -120,6 +121,16 @@
     self.items = nil;
     self.table = nil;
     self.menuDelegate = nil;
+}
+
+#pragma mark -
+#pragma mark - Setter
+
+- (void)setItems:(NSArray *)items
+{
+    _items = items;
+    
+    [self.table reloadData];
 }
 
 #pragma mark - Table view data source
@@ -170,7 +181,7 @@
 {
     SIMenuCell *cell = (SIMenuCell *)[tableView cellForRowAtIndexPath:indexPath];
     [cell setSelected:NO withCompletionBlock:^{
-
+        
     }];
 }
 

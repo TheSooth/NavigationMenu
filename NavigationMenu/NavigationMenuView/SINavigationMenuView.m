@@ -74,6 +74,17 @@
     } completion:NULL];
 }
 
+
+#pragma mark -
+#pragma mark - Setters
+
+- (void)setItems:(NSArray *)items
+{
+    _items = items;
+    
+    self.table.items = items;
+}
+
 #pragma mark -
 #pragma mark Delegate methods
 - (void)didSelectItemAtIndex:(NSUInteger)index
