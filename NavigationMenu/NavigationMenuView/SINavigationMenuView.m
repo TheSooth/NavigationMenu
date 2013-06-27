@@ -63,6 +63,8 @@
 {
     [self rotateArrow:0];
     [self.table hide];
+    
+    self.menuButton.isActive = NO;
 }
 
 - (void)rotateArrow:(float)degrees
